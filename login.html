@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>जल जन आयोग - Login/Sign Up</title>
+    <link rel="stylesheet" href="login-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="aayogj.png" alt="The Curated Compass" class="login-logo">
+                <h2>Welcome To Jal Jan Aayog</h2>
+                <p id="current-step-title">Login or Sign Up</p>
+            </div>
+
+            <form id="login-form">
+
+                <div class="form-step active" id="step1">
+                    <h2>Enter Email or Mobile Number</h2>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" id="email-mobile" placeholder="Email or Mobile No." required>
+                    </div>
+                    <button type="button" id="send-otp-btn" class="primary-btn">Send OTP</button>
+                    <p class="switch-link">Already have an account? <a href="#" id="goto-login">Login</a></p>
+                    <p class="switch-link">New user? <a href="#" id="goto-signup">Sign Up</a></p>
+                </div>
+
+                <div class="form-step" id="step2">
+                    <h3 color="F">Verify OTP </h3>
+                    <p>OTP sent to <span id="otp-destination">your provided detail</span>.</p>
+                    <div class="input-group">
+                        <i class="fas fa-key"></i>
+                        <input type="text" id="otp-input" placeholder="Enter OTP" required maxlength="6">
+                    </div>
+                    <button type="button" id="verify-otp-btn" class="primary-btn">Verify OTP</button>
+                    <button type="button" id="resend-otp-btn" class="secondary-btn">Resend OTP</button>
+                </div>
+
+                <div class="form-step" id="step3">
+                    <h3>Create Username & Password</h3>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" id="final-submit-btn" class="primary-btn">Complete Sign Up</button>
+                    <p class="back-link"><a href="#" id="back-to-otp"><i class="fas fa-arrow-left"></i> Back</a></p>
+                </div>
+
+                <div class="form-step" id="step4">
+                    <h3>Login to your Account</h3>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="login-username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" id="login-btn" class="primary-btn">Login</button>
+                    <p class="forgot-password-link"><a href="#">Forgot Password?</a></p>
+                    <p class="back-link"><a href="#" id="back-to-initial"><i class="fas fa-arrow-left"></i> Back</a></p>
+                </div>
+
+            </form>
+
+            <div class="login-footer">
+                <p>&copy; Jal Jan Aayog</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="login-script.js"></script>
+
+</body>
+</html>

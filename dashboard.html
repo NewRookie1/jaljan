@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>जल जन आयोग - Dashboard</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="aayog.png" alt="Jal Jan Aayog Logo" class="sidebar-logo">
+                <span class="logo-text">JAL JAN AAYOG</span>
+                <span class="admin-text">Admin Portal</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#"><i class="fas fa-th-large"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"><i class="fas fa-file-alt"></i> Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"><i class="fas fa-chart-bar"></i> Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"><i class="fas fa-users"></i> Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"><i class="fas fa-bell"></i> Notifications</a>
+                    </li>
+                    <li class="nav-item upload-nav-item">
+                        <a href="#" id="sidebar-upload-btn"><i class="fas fa-cloud-upload-alt"></i> Upload Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="user-profile">
+                <div class="user-avatar">SA</div>
+                <div class="user-info">
+                    <div class="user-name">Super Admin</div>
+                    <div class="user-email">admin@jaljan.gov.in</div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h2>Dashboard</h2>
+                <div class="search-container">
+                    <input type="text" placeholder="Search...">
+                </div>
+            </header>
+            
+            <div class="dashboard-grid">
+                <div class="widget">
+                    <h3 class="widget-title">Total Reports</h3>
+                    <p class="widget-value" id="total-reports">1,234</p>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">Monitored Vessels</h3>
+                    <p class="widget-value" id="monitored-vessels">56</p>
+                </div>
+
+                <div class="widget quick-actions-widget">
+                    <h3 class="widget-title">Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn"><i class="fas fa-user-plus"></i> Assign Reports</button>
+                        <button class="action-btn"><i class="fas fa-check-circle"></i> Resolved Reports</button>
+                        <button class="action-btn"><i class="fas fa-exclamation-triangle"></i> Escalated Reports</button>
+                        <button class="action-btn upload-trigger-btn" id="quick-action-upload-btn"><i class="fas fa-upload"></i> Upload New Report</button>
+                    </div>
+                </div>
+
+                <div class="widget hazard-categories-widget">
+                    <h3 class="widget-title">Hazard Report Categories</h3>
+                    <div class="categories-list">
+                        <div class="category-item">
+                            <i class="fas fa-cloud-showers-heavy icon-storm"></i>
+                            <span>Storm</span>
+                            <span class="category-count">12%</span>
+                        </div>
+                        <div class="category-item">
+                            <i class="fas fa-oil-can icon-oil-spill"></i>
+                            <span>Oil Spill</span>
+                            <span class="category-count">5%</span>
+                        </div>
+                        <div class="category-item">
+                            <i class="fas fa-wind icon-strong-wind"></i>
+                            <span>Strong Wind</span>
+                            <span class="category-count">8%</span>
+                        </div>
+                        <div class="category-item">
+                            <i class="fas fa-ship icon-collision"></i>
+                            <span>Vessel Collision</span>
+                            <span class="category-count">2%</span>
+                        </div>
+                         <div class="category-item">
+                            <i class="fas fa-trash-alt icon-pollution"></i>
+                            <span>Pollution</span>
+                            <span class="category-count">15%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget wide-widget">
+                    <h3 class="widget-title">Live Hazard Map</h3>
+                    <div id="live-map">
+
+                        <div id="map" style="width: 100%; height: 100%"></div>
+<script>
+  const map = new maplibregl.Map({
+    style: 'https://tiles.openfreemap.org/styles/liberty',
+    center: [80.44, 23.517],
+    zoom: 4,
+    container: 'map',
+  })
+</script>
+                    
+                    </div>
+                </div>
+
+                <div class="widget wide-widget">
+                    <h3 class="widget-title">Hazard Trends</h3>
+                    <div style="width:100%; height:100%;">
+                        <img src="reports.png" alt="Hazard Trends" style="width:100%; height:100%; object-fit: contain; border-radius: 8px;">
+                    </div>
+                </div>
+
+                <div class="widget wide-widget">
+                    <h3 class="widget-title">Water Quality Index</h3>
+                <div id="live-water">
+                        <img src="water.png" alt="Live Hazard Map" style="width:100%; height:100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <canvas id="water-quality-chart"></canvas>
+                </div>
+
+                <div class="widget wide-widget departmental-performance-widget">
+                    <h3 class="widget-title">Departmental Performance</h3>
+                    <div class="department-grid">
+                        <div class="department-card">
+                            <div class="dept-info">
+                                <i class="fas fa-globe-americas"></i>
+                                <h4>IMO</h4>
+                            </div>
+                            <div class="dept-stats">
+                                <p>Total: <span class="stat-value">250</span></p>
+                                <p>Solved: <span class="stat-value solved">230</span></p>
+                            </div>
+                            <canvas class="dept-chart" id="imo-chart"></canvas>
+                        </div>
+                        <div class="department-card">
+                            <div class="dept-info">
+                                <i class="fas fa-anchor"></i>
+                                <h4>ILO</h4>
+                            </div>
+                            <div class="dept-stats">
+                                <p>Total: <span class="stat-value">180</span></p>
+                                <p>Solved: <span class="stat-value solved">165</span></p>
+                            </div>
+                            <canvas class="dept-chart" id="ilo-chart"></canvas>
+                        </div>
+                        <div class="department-card">
+                            <div class="dept-info">
+                                <i class="fas fa-water"></i>
+                                <h4>UNESCO-IOC</h4>
+                            </div>
+                            <div class="dept-stats">
+                                <p>Total: <span class="stat-value">300</span></p>
+                                <p>Solved: <span class="stat-value solved">280</span></p>
+                            </div>
+                            <canvas class="dept-chart" id="unesco-chart"></canvas>
+                        </div>
+                        <div class="department-card">
+                            <div class="dept-info">
+                                <i class="fas fa-fighter-jet"></i>
+                                <h4>Navy & Coast Guard</h4>
+                            </div>
+                            <div class="dept-stats">
+                                <p>Total: <span class="stat-value">400</span></p>
+                                <p>Solved: <span class="stat-value solved">380</span></p>
+                            </div>
+                            <canvas class="dept-chart" id="navy-chart"></canvas>
+                        </div>
+                        <div class="department-card">
+                            <div class="dept-info">
+                                <i class="fas fa-passport"></i>
+                                <h4>Customs & Immigration</h4>
+                            </div>
+                            <div class="dept-stats">
+                                <p>Total: <span class="stat-value">150</span></p>
+                                <p>Solved: <span class="stat-value solved">140</span></p>
+                            </div>
+                            <canvas class="dept-chart" id="customs-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="upload-modal" id="upload-modal">
+        <div class="upload-card">
+            <span class="close-btn" id="close-upload-modal">&times;</span>
+            <h3 class="modal-title">Upload a Hazard Report</h3>
+            <p class="modal-subtitle">Share photos, videos, or documents</p>
+
+            <form id="upload-form">
+                <div class="form-group">
+                    <label for="hazard-type">Hazard Type:</label>
+                    <select id="hazard-type" required>
+                        <option value="">Select Hazard Type</option>
+                        <option value="storm">Storm</option>
+                        <option value="oil-spill">Oil Spill in Ocean</option>
+                        <option value="strong-wind">Strong Wind</option>
+                        <option value="vessel-collision">Vessel Collision</option>
+                        <option value="pollution">Pollution</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" rows="4" placeholder="Describe the hazard, location, and any relevant details..."></textarea>
+                </div>
+                
+                <div class="form-group file-upload-group">
+                    <label for="file-input" class="file-label">
+                        <div class="file-icon-area">
+                            <i class="fas fa-camera"></i>
+                            <i class="fas fa-video"></i>
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <span>Click or Drag & Drop Files Here</span>
+                        <span id="file-count">0 files selected</span>
+                    </label>
+                    <input type="file" id="file-input" multiple accept="image/*,video/*,application/pdf">
+                </div>
+
+                <div id="file-preview-container" class="file-preview-container"></div>
+
+                <button type="submit" class="upload-btn">Submit Report</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

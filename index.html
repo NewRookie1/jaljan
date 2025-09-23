@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>जल जन आयोग</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="splash-screen">
+        <img src="aayogj.png" alt="JAL JAN Logo" class="splash-logo">
+        
+        <h3 class="splash-text">Jal Se Jan - Knowledge For Tomorrow</h3>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const splashScreen = document.querySelector('.splash-screen');
+
+            setTimeout(() => {
+                splashScreen.style.opacity = '0';
+                setTimeout(() => {
+                    // Redirect to the login page first
+                    window.location.href = 'login.html'; // <--- CHANGE IS HERE
+                }, 1000);
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>

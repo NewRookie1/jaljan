@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #d2dbdc, #286f7f); /* Dark cosmic gradient background */
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Prevent scrollbar if card is large */
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px; /* Max width of the login card */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-card {
+    background-color: hsl(194, 83%, 12%); /* Darker purple for the card */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+.login-header {
+    margin-bottom: 30px;
+}
+
+.login-logo {
+    width: 140px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.login-header h2 {
+    font-size: 1.5em;
+    color: #a2deef; /* Yellow from your logo */
+    margin-bottom: 10px;
+}
+
+.login-header p {
+    font-size: 1em;
+    color: #b0b0b0;
+}
+
+.form-step {
+    display: none; /* Hide all steps by default */
+    animation: fadeIn 0.5s ease-out; /* Fade in animation for steps */
+}
+
+.form-step.active {
+    display: block; /* Show active step */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-step h3 {
+    font-size: 1.4em;
+    color: black;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.1em;
+}
+
+.input-group input {
+    width: calc(100% - 70px); /* Adjust width for icon and padding */
+    padding: 15px 15px 15px 50px; /* Left padding for icon */
+    background-color: #0e3860,#ff8c00; /* Darker input background */
+    border: 1px solid #5b327b; /* Border color */
+    border-radius: 10px;
+    color: #0d011d;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #ffd700; /* Yellow focus border */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3); /* Subtle yellow glow */
+}
+
+.primary-btn {
+    background: linear-gradient(90deg, #ffd700, #ff8c00); /* Yellow-orange gradient */
+    color: #120220; /* Dark text for contrast */
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.secondary-btn {
+    /* Set the background to match the primary button */
+    background: linear-gradient(90deg, #ffd700, #ff8c00); 
+    
+    /* Set the text color to black as requested */
+    color: #060112;
+    
+    border: none; /* Removed the purple border */
+    padding: 15px 25px; /* Matched the padding to the primary button */
+    border-radius: 10px;
+    font-size: 1.1em; /* Matched the font size */
+    font-weight: bold; /* Matched the font weight */
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Matched the hover transition */
+}
+
+.secondary-btn:hover {
+    /* Match the hover effect of the primary button */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.switch-link, .back-link, .forgot-password-link {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #b0b0b0;
+}
+
+.switch-link a, .back-link a, .forgot-password-link a {
+    color: #ffd700; /* Yellow link color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.switch-link a:hover, .back-link a:hover, .forgot-password-link a:hover {
+    color: #ff8c00; /* Darker yellow/orange on hover */
+}
+
+.back-link i {
+    margin-right: 5px;
+}
+
+.login-footer {
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: #888;
+}
